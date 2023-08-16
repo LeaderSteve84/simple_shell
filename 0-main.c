@@ -1,8 +1,10 @@
 #include "shell.h"
+
 /**
  * main - 
  * return: o (success)
  */
+
 int main()
 {
 	int isatty_mode, i;
@@ -18,7 +20,7 @@ int main()
 		token_array = read_line();
 		if (token_array == NULL)
 		{
-			perror("token_array pointer address return to main failed");
+			perror("token_array pointer address return to main failed\n");
 			exit(EXIT_FAILURE);
 		}
 		for (i = 0; token_array[i] != NULL; i++)
