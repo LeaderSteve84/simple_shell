@@ -8,6 +8,7 @@
 #define DELIMITER " \n"
 #include <string.h>
 void prompt();
-char *readline();
+char **read_line();
+char **split_tokenize(int n, char **buff);
 
 #endif
