@@ -1,11 +1,13 @@
 #include "shell.h"
 
 /**
- * prompt - 
- * return: nothing
+ * prompt - Prints a prompt "$ " and waits for the user
+ * to input a command.
+ *
+ * Return: nothing
  */
 
-void prompt()
+void prompt(void)
 {
 	char *prompt;
 	size_t prompt_size;
