@@ -12,5 +12,6 @@
 char *read_line(void);
 char *duplicate(char *buff);
 char **tokenize(char *str, char *buff, char **token_array);
+void exec_func(char **token_array);
 
 #endif /* #ifndef SHELL_H */

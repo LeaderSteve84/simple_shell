@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-	int isatty_mode = 0, i, j;
+	int isatty_mode = 0, j;
 	char *getline_buffer = NULL, *buffer = NULL;
 	ssize_t write_return;
 	char **token_array;
@@ -27,11 +27,7 @@ int main(void)
 		getline_buffer = read_line();
 		buffer = duplicate(getline_buffer);
 		token_array = tokenize(getline_buffer, buffer, NULL);
-
-		for (i = 0; token_array[i] != NULL; i++)
-		{
-			printf("%s\n", token_array[i]);
-		}
+		exec_func(token_array);
 		for (j = 0; token_array[j] != NULL; j++)
 		{
 			free(token_array[j]);
