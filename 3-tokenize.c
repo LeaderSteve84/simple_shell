@@ -1,35 +1,47 @@
 #include "shell.h"
 /**
- * split_tokenize - 
- * @n:
- * @buff:
- * return: pointer to array of string
- */
-char **split_tokenize(int n, char **buff)
+ * tokenize - 
+ * @token_array:
+ * return: pointer to array of strings.
+*/
+
+char **tokenize(char *str, char *buff, char **token_array)
 {
-	char **array_of_tokens = NULL;
 	char *token_addr;
-	int i;
+	int count_tokens_num = 0, i = 0;
 
-	array_of_tokens = malloc((n + 1) * sizeof(char *));
-	if (array_of_tokens == NULL)
+	token_addr = strtok(str, DELIMITER);
+        while (token_addr != NULL)
+        {
+                count_tokens_num++;
+                token_addr = strtok(NULL, DELIMITER);
+        }
+        count_tokens_num++;
+
+        token_array = malloc((count_tokens_num + 1) * sizeof(char *));
+        if (token_array == NULL)
+        {
+                perror("memory allocation to array_of_tokens failed");
+                exit(EXIT_FAILURE);
+        }
+        token_addr = strtok(buff, DELIMITER);
+
+        for (i = 0; token_addr != NULL; i++)
+        {
+                token_array[i] = malloc((strlen(token_addr) + 1) * sizeof(char));
+
+                if (token_array[i] == NULL)
+                {
+                        perror("memory allocation to array_index[i] failed");
+                        exit(EXIT_FAILURE);
+                }
+                strcpy(token_array[i], token_addr);
+                token_addr = strtok(NULL, DELIMITER);
+        }
+        return (token_array);
+	for (i = 0; token_array[i] != NULL; i++)
 	{
-		perror("memory allocation to array_of_tokens failed");
-		exit(EXIT_FAILURE);
+		free(token_array[i]);
 	}
-	token_addr = strtok(*buff, DELIMITER);
-
-	for (i = 0; token_addr != NULL; i++)
-	{
-		array_of_tokens[i] = malloc((strlen(token_addr) + 1) * sizeof(char));
-
-		if (array_of_tokens[i] == NULL)
-		{
-			perror("memory allocation to array_index[i] failed");
-			exit(EXIT_FAILURE);
-		}
-		strcpy(array_of_tokens[i], token_addr);
-		token_addr = strtok(NULL, DELIMITER);
-	}
-	return (array_of_tokens);
+	free(token_array);
 }

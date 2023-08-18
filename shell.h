@@ -9,8 +9,8 @@
 #define DELIMITER " \n"
 #include <string.h>
 
-void prompt(void);
-char **read_line(void);
-char **split_tokenize(int n, char **buff);
+char *read_line(void);
+char *duplicate(char *buff);
+char **tokenize(char *str, char *buff, char **token_array);
 
 #endif /* #ifndef SHELL_H */
