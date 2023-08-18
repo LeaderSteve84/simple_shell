@@ -5,20 +5,17 @@
  */
 int main(void)
 {
-	int isatty_mode = 0, i = 0, j = 0;
-	char *prompt = NULL, *getline_buffer = NULL, *buffer = NULL;
-	size_t prompt_size = 0;
-	ssize_t write_return = 0;
+	int isatty_mode = 0, i, j;
+	char *getline_buffer = NULL, *buffer = NULL;
+	ssize_t write_return;
 	char **token_array = NULL;
 
-	prompt = "$ ";
-	prompt_size = strlen(prompt);
 	isatty_mode = isatty(STDIN_FILENO);
 	while (isatty_mode)
 	{
 		if (isatty_mode == 1)
 		{
-			write_return = write(STDOUT_FILENO, prompt, prompt_size);
+			write_return = write(STDOUT_FILENO, "$ ", 2);
 			if (write_return == -1)
 			{
 				perror("propmt failed");
@@ -37,7 +34,9 @@ int main(void)
 		{
 			free(token_array[j]);
 		}
+
 		free(token_array);
+
 		free(buffer);
 		free(getline_buffer);
 	}
