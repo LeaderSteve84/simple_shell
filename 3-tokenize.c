@@ -39,9 +39,4 @@ char **tokenize(char *str, char *buff, char **token_array)
                 token_addr = strtok(NULL, DELIMITER);
         }
         return (token_array);
-	for (i = 0; token_array[i] != NULL; i++)
-	{
-		free(token_array[i]);
-	}
-	free(token_array);
 }
