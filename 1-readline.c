@@ -14,8 +14,8 @@ char *read_line(void)
 	/*handle ctrl+D*/
 	if (num_of_char_read == -1)
 	{
-		write(STDOUT_FILENO, "\n", 1);
-		exit(127);
+		free(getline_buffer);
+		return (NULL);
 	}
 	/*check if getline function store the command read from stdin*/
 	if (getline_buffer == NULL)

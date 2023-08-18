@@ -25,6 +25,11 @@ int main(void)
 			}
 		}
 		getline_buffer = read_line();
+		if (getline_buffer == NULL)
+		{
+			write(STDOUT_FILENO, "\n", 1);
+			break;
+		}
 		buffer = duplicate(getline_buffer);
 		token_array = tokenize(getline_buffer, buffer, NULL);
 		exec_func(token_array);
