@@ -7,7 +7,7 @@
 
 char **tokenize(char *str, char *buff, char **token_array)
 {
-	char *token_addr;
+	char *token_addr = NULL;
 	int count_tokens_num = 0, i = 0;
 
 	token_addr = strtok(str, DELIMITER);
@@ -24,6 +24,11 @@ char **tokenize(char *str, char *buff, char **token_array)
                 perror("memory allocation to array_of_tokens failed");
                 exit(EXIT_FAILURE);
         }
+	for (i = 0; i < count_tokens_num + 1; i++)
+	{
+		token_array[i] = NULL;
+	}
+
         token_addr = strtok(buff, DELIMITER);
 
         for (i = 0; token_addr != NULL; i++)
@@ -38,5 +43,7 @@ char **tokenize(char *str, char *buff, char **token_array)
                 strcpy(token_array[i], token_addr);
                 token_addr = strtok(NULL, DELIMITER);
         }
+	token_array[count_tokens_num] = NULL;
+
         return (token_array);
 }

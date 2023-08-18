@@ -6,7 +6,7 @@
  */
 char *duplicate(char *buff)
 {
-	char *buffer = NULL;
+	char *buffer;
 
 	buffer = malloc((strlen(buff) + 1) * sizeof(char));
 	if (buffer == NULL)
@@ -14,6 +14,8 @@ char *duplicate(char *buff)
 		perror("memory allocation to buffer failed");
 		exit(EXIT_FAILURE);
 	}
+	buffer[0] = '\0';
+
 	strcpy(buffer, buff);
 
 	return (buffer);

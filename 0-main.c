@@ -8,11 +8,13 @@ int main(void)
 	int isatty_mode = 0, i, j;
 	char *getline_buffer = NULL, *buffer = NULL;
 	ssize_t write_return;
-	char **token_array = NULL;
+	char **token_array;
 
 	isatty_mode = isatty(STDIN_FILENO);
-	while (isatty_mode)
+	while (1)
 	{
+		isatty_mode = isatty(STDIN_FILENO);
+
 		if (isatty_mode == 1)
 		{
 			write_return = write(STDOUT_FILENO, "$ ", 2);
