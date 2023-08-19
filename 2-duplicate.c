@@ -16,7 +16,7 @@ char *duplicate(char *buff)
 	}
 	buffer[0] = '\0';
 
-	strcpy(buffer, buff);
+	_strcpy(buffer, buff);
 
 	return (buffer);
 }

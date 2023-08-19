@@ -14,6 +14,7 @@ char *read_line(void);
 char *duplicate(char *buff);
 char **tokenize(char *str, char *buff, char **token_array);
 void exec_func(char **token_array, char **environ);
+char *_strcpy(char *str_to, char *str_fr);
 /*void sigint_handler(int signum);*/
 
 #endif /* #ifndef SHELL_H */

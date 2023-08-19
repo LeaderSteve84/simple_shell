@@ -40,7 +40,7 @@ char **tokenize(char *str, char *buff, char **token_array)
 			perror("memory allocation to array_index[i] failed");
 			exit(EXIT_FAILURE);
 		}
-		strcpy(token_array[i], token_addr);
+		_strcpy(token_array[i], token_addr);
 		token_addr = strtok(NULL, DELIMITER);
 	}
 	token_array[count_tokens_num] = NULL;
