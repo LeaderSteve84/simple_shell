@@ -96,3 +96,29 @@ char *_strstr(char *haystack, char *needle)
 	}
 	return (NULL);
 }
+
+/**
+ * _printenv - Prints the environment to stdout
+ * @environ: The enviroment
+ *
+ * Return: Nothing
+ */
+
+void _printenv(char **environ)
+{
+	int len, i = 0;
+	ssize_t n_bytes;
+
+	while (environ[i] != NULL)
+	{
+		len = _strlen(environ[i]);
+		n_bytes = write(STDOUT_FILENO, environ[i], len);
+		if (n_bytes == -1)
+		{
+			perror("write");
+			return;
+		}
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
+	}
+}

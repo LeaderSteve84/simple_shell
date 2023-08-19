@@ -15,6 +15,11 @@ void exec_func(char **token_array, char **environ)
 	ssize_t a;
 	char *ret;
 
+	if (_strcheck(token_array[0]) == NULL)
+	{
+		_printenv(environ);
+		return;
+	}
 	a = access((ret = _strcheck(token_array[0])), F_OK);
 	if (a == -1)
 	{

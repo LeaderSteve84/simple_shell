@@ -36,5 +36,7 @@ char *_strcheck(char *args)
 		ptr = "/bin/cat";
 		return (ptr);
 	}
+	if (_strcmp("env", args) == 0)
+		return (NULL);
 	return (args);
 }
