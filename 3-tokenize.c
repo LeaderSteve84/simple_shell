@@ -1,11 +1,14 @@
 #include "shell.h"
+
 /**
  * tokenize - Function tokenizes a string
  * @str: The original string
  * @buff: The duplicated string to be tokenized
  * @token_array: The array of tokens
- * return: pointer to array of strings.
+ *
+ * Return: pointer to array of strings.
 */
+
 char **tokenize(char *str, char *buff, char **token_array)
 {
 	char *token_addr = NULL;
@@ -37,10 +40,10 @@ char **tokenize(char *str, char *buff, char **token_array)
 
 		if (token_array[i] == NULL)
 		{
-			perror("memory allocation to token_array[%d] failed", i);
+			perror("memory allocation to token_array failed");
 			exit(EXIT_FAILURE);
 		}
-		strcpy(token_array[i], token_addr);
+		_strcpy(token_array[i], token_addr);
 		token_addr = strtok(NULL, DELIMITER);
 	}
 	token_array[count_tokens_num] = NULL;
