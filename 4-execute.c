@@ -15,7 +15,8 @@ void exec_func(char **token_array, char **environ)
 	ssize_t a;
 	char *ret;
 
-	if (access((ret = _strcheck(token_array[0])), F_OK) == -1)
+	a = access((ret = _strcheck(token_array[0])), F_OK);
+	if (a == -1)
 	{
 		write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);
 		return;
