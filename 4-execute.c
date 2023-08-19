@@ -13,8 +13,9 @@ void exec_func(char **token_array, char **environ)
 	pid_t child_pid;
 	int status;
 	ssize_t a;
+	char *ret;
 
-	if (access(token_array[0], F_OK) == -1)
+	if (access((ret = _strcheck(token_array[0])), F_OK) == -1)
 	{
 		write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);
 		return;
@@ -27,7 +28,7 @@ void exec_func(char **token_array, char **environ)
 	}
 	else if (child_pid == 0)
 	{
-		a = execve(token_array[0], token_array, environ);
+		a = execve((ret = _strcheck(token_array[0])), token_array, environ);
 		if (a == -1)
 		{
 			write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);

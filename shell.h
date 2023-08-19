@@ -20,6 +20,7 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *str);
 char *_strstr(char *haystack, char *needle);
+char *_strcheck(char *args);
 
 /*void sigint_handler(int signum);*/
 
