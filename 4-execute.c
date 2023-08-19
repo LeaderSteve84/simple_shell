@@ -1,8 +1,11 @@
 #include "shell.h"
+
 /**
- * exec_func -
- * @token_array:
- * return:
+ * exec_func - Executes commands
+ * @token_array: Array of tokens
+ * @environ: Global variable
+ *
+ * Return: Nothing
  */
 
 void exec_func(char **token_array, char **environ)
@@ -30,6 +33,5 @@ void exec_func(char **token_array, char **environ)
 	else
 	{
 		wait(&status);
-
 	}
 }
