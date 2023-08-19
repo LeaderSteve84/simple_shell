@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * read_line - 
+ * read_line -
  * return: a pointer to an array string.
  */
 

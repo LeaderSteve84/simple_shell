@@ -3,18 +3,16 @@
  * main -
  * return: 0 (success)
  */
-int main(void)
+int main(int ac, char **token_array, char **environ)
 {
 	int isatty_mode = 0, j;
 	char *getline_buffer = NULL, *buffer = NULL;
 	ssize_t write_return;
-	char **token_array;
 
+	(void)ac;
 	isatty_mode = isatty(STDIN_FILENO);
 	while (1)
 	{
-		isatty_mode = isatty(STDIN_FILENO);
-
 		if (isatty_mode == 1)
 		{
 			write_return = write(STDOUT_FILENO, "$ ", 2);
@@ -32,7 +30,7 @@ int main(void)
 		}
 		buffer = duplicate(getline_buffer);
 		token_array = tokenize(getline_buffer, buffer, NULL);
-		exec_func(token_array);
+		exec_func(token_array, environ);
 		for (j = 0; token_array[j] != NULL; j++)
 		{
 			free(token_array[j]);

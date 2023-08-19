@@ -1,13 +1,12 @@
 #include "shell.h"
 /**
- * exec_func - 
+ * exec_func -
  * @token_array:
  * return:
  */
 
-void exec_func(char **token_array)
+void exec_func(char **token_array, char **environ)
 {
-	extern char **environ;
 	pid_t child_pid;
 	int status;
 	ssize_t a;

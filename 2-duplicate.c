@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * duplicate - 
+ * duplicate -
  * @buff:
  * return: pointer to array of strings.
  */
