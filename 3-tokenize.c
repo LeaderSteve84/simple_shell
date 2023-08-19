@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
- * tokenize -
- * @str:
- * @buff:
- * @token_array:
+ * tokenize - Function tokenizes a string
+ * @str: The original string
+ * @buff: The duplicated string to be tokenized
+ * @token_array: The array of tokens
  * return: pointer to array of strings.
 */
 char **tokenize(char *str, char *buff, char **token_array)
@@ -22,7 +22,7 @@ char **tokenize(char *str, char *buff, char **token_array)
 	token_array = malloc((count_tokens_num + 1) * sizeof(char *));
 	if (token_array == NULL)
 	{
-		perror("memory allocation to array_of_tokens failed");
+		perror("memory allocation to token_array failed");
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0; i < count_tokens_num + 1; i++)
@@ -33,11 +33,11 @@ char **tokenize(char *str, char *buff, char **token_array)
 
 	for (i = 0; token_addr != NULL; i++)
 	{
-		token_array[i] = malloc((strlen(token_addr) + 1) * sizeof(char));
+		token_array[i] = malloc((_strlen(token_addr) + 1) * sizeof(char));
 
 		if (token_array[i] == NULL)
 		{
-			perror("memory allocation to array_index[i] failed");
+			perror("memory allocation to token_array[%d] failed", i);
 			exit(EXIT_FAILURE);
 		}
 		strcpy(token_array[i], token_addr);
