@@ -1,26 +1,26 @@
 #include "shell.h"
+
 /**
- * main -
- * return: 0 (success)
+ * main - Entry point
+ * @ac: Argument count
+ * @token_array: Array of tokens
+ * @environ: The global variable
+ *
+ * Return: 0 (success)
  */
+
 int main(int ac, char **token_array, char **environ)
 {
 	int isatty_mode = 0, j;
 	char *getline_buffer = NULL, *buffer = NULL;
-	ssize_t write_return;
-
 	(void)ac;
+
 	isatty_mode = isatty(STDIN_FILENO);
 	while (1)
 	{
 		if (isatty_mode == 1)
 		{
-			write_return = write(STDOUT_FILENO, "$ ", 2);
-			if (write_return == -1)
-			{
-				perror("propmt failed");
-				exit(EXIT_FAILURE);
-			}
+			write(STDOUT_FILENO, "$ ", 2);
 		}
 		getline_buffer = read_line();
 		if (getline_buffer == NULL)
@@ -35,9 +35,7 @@ int main(int ac, char **token_array, char **environ)
 		{
 			free(token_array[j]);
 		}
-
 		free(token_array);
-
 		free(buffer);
 		free(getline_buffer);
 	}

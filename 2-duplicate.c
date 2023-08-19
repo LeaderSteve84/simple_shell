@@ -1,9 +1,12 @@
 #include "shell.h"
+
 /**
- * duplicate -
- * @buff:
- * return: pointer to array of strings.
+ * duplicate - Duplicates a string
+ * @buff: The string to be duplicated
+ *
+ * Return: Pointer to an array of strings.
  */
+
 char *duplicate(char *buff)
 {
 	char *buffer;

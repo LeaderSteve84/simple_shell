@@ -1,7 +1,9 @@
 #include "shell.h"
+
 /**
- * read_line -
- * return: a pointer to an array string.
+ * read_line - Reads chars from stdin using getline
+ *
+ * Return: A pointer to an array string.
  */
 
 char *read_line(void)
