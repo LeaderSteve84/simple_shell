@@ -28,7 +28,7 @@ int _strlen(char *str)
  * Return: Pointer to the destination string
  */
 
-char *_strncpy(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 	char *ptr = dest;
 
