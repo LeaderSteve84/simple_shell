@@ -13,15 +13,14 @@ int main(int ac, char **token_array, char **environ)
 {
 	int isatty_mode = 0, j;
 	char *getline_buffer = NULL, *buffer = NULL;
-	ssize_t write_return;
-
 	(void)ac;
+
 	isatty_mode = isatty(STDIN_FILENO);
 	while (1)
 	{
 		if (isatty_mode == 1)
 		{
-			write_return = write(STDOUT_FILENO, "$ ", 2);
+			write(STDOUT_FILENO, "$ ", 2);
 		}
 		getline_buffer = read_line();
 		if (getline_buffer == NULL)
