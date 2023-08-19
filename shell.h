@@ -19,6 +19,8 @@ void exec_func(char **token_array, char **environ);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *str);
+char *_strstr(char *haystack, char *needle);
+
 /*void sigint_handler(int signum);*/
 
 #endif /* #ifndef SHELL_H */
