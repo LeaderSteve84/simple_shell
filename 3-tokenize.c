@@ -26,7 +26,7 @@ char **tokenize(char *str, char *buff, char **token_array)
 	if (token_array == NULL)
 	{
 		perror("memory allocation to token_array failed");
-		exit(EXIT_FAILURE);
+		exit(errno);
 	}
 	for (i = 0; i < count_tokens_num + 1; i++)
 	{
@@ -41,7 +41,7 @@ char **tokenize(char *str, char *buff, char **token_array)
 		if (token_array[i] == NULL)
 		{
 			perror("memory allocation to token_array failed");
-			exit(EXIT_FAILURE);
+			exit(errno);
 		}
 		_strcpy(token_array[i], token_addr);
 		token_addr = strtok(NULL, DELIMITER);

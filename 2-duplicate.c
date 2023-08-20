@@ -15,7 +15,7 @@ char *duplicate(char *buff)
 	if (buffer == NULL)
 	{
 		perror("memory allocation to buffer failed");
-		exit(EXIT_FAILURE);
+		exit(errno);
 	}
 	buffer[0] = '\0';
 

@@ -23,22 +23,22 @@ void exec_func(char **token_array, char **environ)
 	a = access((ret = _strcheck(token_array[0])), F_OK);
 	if (a == -1)
 	{
-		write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);
+		perror(token_array[0]);
 		return;
 	}
 	child_pid = fork();
 	if (child_pid == -1)
 	{
 		perror("fork function failed");
-		exit(127);
+		exit(errno);
 	}
 	else if (child_pid == 0)
 	{
 		a = execve((ret = _strcheck(token_array[0])), token_array, environ);
 		if (a == -1)
 		{
-			write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);
-			exit(EXIT_FAILURE);
+			perror(token_array[0]);
+			exit(errno);
 		}
 	}
 	else

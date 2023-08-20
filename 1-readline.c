@@ -23,7 +23,7 @@ char *read_line(void)
 	if (getline_buffer == NULL)
 	{
 		perror("Unable to read command");
-		exit(EXIT_FAILURE);
+		exit(errno);
 	}
 	return (getline_buffer);
 }
