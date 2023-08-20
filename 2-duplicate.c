@@ -11,7 +11,7 @@ char *duplicate(char *buff)
 {
 	char *buffer;
 
-	buffer = malloc((strlen(buff) + 1) * sizeof(char));
+	buffer = malloc((_strlen(buff) + 1) * sizeof(char));
 	if (buffer == NULL)
 	{
 		perror("memory allocation to buffer failed");
