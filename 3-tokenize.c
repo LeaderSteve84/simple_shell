@@ -28,7 +28,7 @@ char **tokenize(char *str, char *buff, char **token_array)
 		perror("memory allocation to token_array failed");
 		exit(errno);
 	}
-	for (i = 0; i < count_tokens_num + 1; i++)
+	for (i = 0; i <= count_tokens_num; i++)
 	{
 		token_array[i] = NULL;
 	}

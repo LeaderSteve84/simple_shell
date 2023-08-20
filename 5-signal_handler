@@ -1,8 +1,0 @@
-#include "shell.h"
-/**
- */
-void signal_handler(int signum)
-{
-	(void)signum;
-	write(STDOUT_FILENO, "\n", 1);
-}

@@ -24,6 +24,7 @@ void exec_func(char **token_array, char **environ)
 	if (a == -1)
 	{
 		perror(token_array[0]);
+		ret = NULL;
 		return;
 	}
 	child_pid = fork();

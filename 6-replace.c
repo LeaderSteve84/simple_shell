@@ -37,6 +37,8 @@ char *_strcheck(char *args)
 		return (ptr);
 	}
 	if (_strcmp("env", args) == 0)
+	{
 		return (NULL);
+	}
 	return (args);
 }
