@@ -13,37 +13,36 @@ void exec_func(char **token_array, char **environ)
 	pid_t child_pid;
 	int status;
 	ssize_t a;
-	char *ret;
+	char *ret = NULL, *path_copy = NULL;
 
-	if (_strcheck(token_array[0]) == NULL)
-	{
-		_printenv(environ);
-		return;
-	}
 	a = access((ret = _strcheck(token_array[0])), F_OK);
 	if (a == -1)
 	{
-		perror(token_array[0]);
-		ret = NULL;
-		return;
+		path_copy = path_directories(environ);
+		find_in_path((ret = _strcheck(token_array[0])), path_copy,
+				token_array, environ);
+		free(path_copy);
 	}
-	child_pid = fork();
-	if (child_pid == -1)
+	if (a == 0)
 	{
-		perror("fork function failed");
-		exit(errno);
-	}
-	else if (child_pid == 0)
-	{
-		a = execve((ret = _strcheck(token_array[0])), token_array, environ);
-		if (a == -1)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			perror(token_array[0]);
+			perror("fork function failed");
 			exit(errno);
 		}
-	}
-	else
-	{
-		wait(&status);
+		else if (child_pid == 0)
+		{
+			a = execve((ret = _strcheck(token_array[0])), token_array, environ);
+			if (a == -1)
+			{
+				perror(token_array[0]);
+				exit(errno);
+			}
+		}
+		else
+		{
+			wait(&status);
+		}
 	}
 }
