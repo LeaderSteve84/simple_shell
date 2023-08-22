@@ -53,7 +53,6 @@ char *_strcpy(char *dest, char *src)
  * Return: 0, if the two strings are the same
  * else, it returns the difference which is != 0
  */
-
 int _strcmp(char *s1, char *s2)
 {
 	int i = 0;
@@ -69,56 +68,52 @@ int _strcmp(char *s1, char *s2)
 	return (0);
 }
 
+
+
 /**
- * _strstr - Function locates a substring
- * @haystack: String to be checked
- * @needle: Second string
- *
- * Return: Always 0 or "NULL" if otherwise.
+ * _strcat - a program that concatenates two strings
+ * @dest: The destination string
+ * @src: The source string
+ * Return: A pointer to the resulting string dest
  */
 
-char *_strstr(char *haystack, char *needle)
-{
-	char *str1, *str2;
+char *_strcat(char *dest, char *src)
 
-	while (*haystack != '\0')
+{
+	int dlen = 0, i;
+
+	while (dest[dlen])
 	{
-		str1 = haystack;
-		str2 = needle;
-		while (*haystack != '\0' && *str2 != '\0' && *haystack == *str2)
-		{
-			haystack++;
-			str2++;
-		}
-		if (*str2 == '\0')
-			return (str1);
-		haystack = str1 + 1;
+	dlen++;
 	}
-	return (NULL);
+
+	for (i = 0; src[i] != 0; i++)
+	{
+		dest[dlen] = src[i];
+		dlen++;
+	}
+	dest[dlen] = '\0';
+	return (dest);
 }
 
 /**
- * _printenv - Prints the environment to stdout
- * @environ: The enviroment
- *
- * Return: Nothing
+ * _strncpy - a function that copies a string
+ * @dest: The buffer storing the string copy
+ * @src: The source string
+ * @n: The maximum number of bytes to copied from src.
+ * Return: a pointer to the resulting string dest'
  */
-
-void _printenv(char **environ)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int len, i = 0;
-	ssize_t n_bytes;
+	int index = 0;
+	int src_len = 0;
 
-	while (environ[i] != NULL)
-	{
-		len = _strlen(environ[i]);
-		n_bytes = write(STDOUT_FILENO, environ[i], len);
-		if (n_bytes == -1)
-		{
-			perror("write");
-			return;
-		}
-		write(STDOUT_FILENO, "\n", 1);
-		i++;
-	}
+	while (src[index++])
+		src_len++;
+	for (index = 0; src[index] && index < n; index++)
+		dest[index] = src[index];
+	for (index = src_len; index < n; index++)
+		dest[index] = '\0';
+
+	return (dest);
 }
