@@ -28,6 +28,11 @@ int main(int ac, char **token_array, char **environ)
 			write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
+		if (getline_buffer[0] == '\n')
+		{
+			free(getline_buffer);
+			continue;
+		}
 		buffer = duplicate(getline_buffer);
 		token_array = tokenize(getline_buffer, buffer, NULL);
 		exec_func(token_array, environ);
