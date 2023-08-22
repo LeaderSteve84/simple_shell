@@ -76,7 +76,7 @@ char *_getenv(char *name, char **environ)
 }
 
 /**
- * path_directories - a function that get he values of PATH.
+ * path_directories - a function that get the values of PATH.
  * @environ: user environment
  * Return: a pointer to a string
  */
@@ -102,6 +102,7 @@ char *path_directories(char **environ)
 
 	return (path_copy);
 }
+
 /**
  * find_in_path - function that find the input command in
  * the PATH
@@ -145,9 +146,11 @@ void find_in_path(char *args, char *str, char **av, char **environ)
 				exit(errno);
 			}
 			else
-			wait(&status);
-			free(full_path);
-			break;
+			{
+				wait(&status);
+				free(full_path);
+				break;
+			}
 		}
 		free(full_path);
 		dir = strtok(NULL, ":");
