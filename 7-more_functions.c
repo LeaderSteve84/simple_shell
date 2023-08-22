@@ -14,7 +14,7 @@ char *_strchr(char *s, char c)
 	for (i = 0; s[i] >= '\0'; i++)
 	{
 		if (s[i] == c)
-		return (s + i);
+			return (s + i);
 	}
 	return (NULL);
 }
@@ -69,4 +69,3 @@ int _strncmp(char *s1, char *s2, size_t n)
 	}
 	return (0);
 }
-

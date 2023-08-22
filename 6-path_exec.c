@@ -153,5 +153,5 @@ void find_in_path(char *args, char *str, char **av, char **environ)
 		dir = strtok(NULL, ":");
 	}
 	if (!exec_found)
-	perror(args);
+		perror(args);
 }
