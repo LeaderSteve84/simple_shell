@@ -6,11 +6,11 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#define DELIMITER " \n"
+#define DELIMITER " \n\t"
 #include <string.h>
 #include <fcntl.h>
 #include <errno.h>
-/*#include <signal.h>*/
+#define MAX_PATH_LENGTH 1024
 
 char *read_line(void);
 char *duplicate(char *buff);
@@ -19,11 +19,17 @@ void exec_func(char **token_array, char **environ);
 
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
+int _strncmp(char *s1, char *s2, size_t n);
 int _strlen(char *str);
 char *_strstr(char *haystack, char *needle);
 char *_strcheck(char *args);
-void _printenv(char **environ);
+char *_strcat(char *dest, char *src);
+char *_strncpy(char *dest, char *src, int n);
+char *_strchr(char *s, char c);
+char *path_directories(char **environ);
+int compare_first_five(char *str1, char *str2);
+char *_getenv(char *name, char **environ);
+void find_in_path(char *args, char *str, char **av, char **environ);
 
-/*void sigint_handler(int signum);*/
 
 #endif /* #ifndef SHELL_H */
