@@ -11,7 +11,7 @@
 
 int main(int ac, char **token_array, char **environ)
 {
-	int isatty_mode = 0;
+	int isatty_mode = 0, status;
 	char *getline_buffer = NULL, *buffer = NULL;
 	(void)ac;
 
@@ -36,12 +36,13 @@ int main(int ac, char **token_array, char **environ)
 		}
 		buffer = duplicate(getline_buffer);
 		token_array = tokenize(getline_buffer, buffer, NULL);
-		if ((_strcmp(token_array[0], "exit") == 0) && token_array[1] == NULL)
+		if ((_strcmp(token_array[0], "exit") == 0))
 		{
+			status = exit_status(token_array);
 			free(buffer);
 			free(getline_buffer);
 			free_tokens(token_array);
-			exit(0);
+			exit(status);
 		}
 		exec_func(token_array, environ);
 		free_tokens(token_array);
