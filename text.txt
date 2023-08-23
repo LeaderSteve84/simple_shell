@@ -1,3 +1,0 @@
-/bin/ls
-/bin/echo hello guys
-/bin/ls ..

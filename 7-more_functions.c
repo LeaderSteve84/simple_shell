@@ -69,3 +69,19 @@ int _strncmp(char *s1, char *s2, size_t n)
 	}
 	return (0);
 }
+
+/**
+ * free_tokens - Function frees tokenized strings
+ * @token_array - Array of tokens to be freed
+ *
+ * Return: Nothing
+ */
+
+void free_tokens(char **token_array)
+{
+	int i;
+
+	for (i = 0; token_array[i] != NULL; i++)
+		free(token_array[i]);
+	free(token_array);
+}

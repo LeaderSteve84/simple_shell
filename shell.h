@@ -30,6 +30,7 @@ char *path_directories(char **environ);
 int compare_first_five(char *str1, char *str2);
 char *_getenv(char *name, char **environ);
 void find_in_path(char *args, char *str, char **av, char **environ);
+void free_tokens(char **token_array);
 
 
 #endif /* #ifndef SHELL_H */
