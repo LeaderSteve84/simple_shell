@@ -10,6 +10,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/stat.h>
 #define MAX_PATH_LENGTH 1024
 
 char *read_line(void);
@@ -32,6 +33,7 @@ char *_getenv(char *name, char **environ);
 void find_in_path(char *args, char *str, char **av, char **environ);
 void free_tokens(char **token_array);
 int exit_status(char **token_array);
+void remove_newline_character(char *getline_buffer);
 
 
 #endif /* #ifndef SHELL_H */
