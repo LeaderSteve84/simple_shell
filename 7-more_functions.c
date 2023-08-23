@@ -100,5 +100,7 @@ int exit_status(char **token_array)
 	if (token_array[1] == NULL)
 		return (0);
 	status = atoi(token_array[1]);
+	if (status < 0)
+		status = 2;
 	return (status);
 }
