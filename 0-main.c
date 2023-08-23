@@ -29,7 +29,8 @@ int main(int ac, char **token_array, char **environ)
 				write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
-		if (getline_buffer[0] == '\n' || getline_buffer[0] == ' ')
+		remove_newline_character(getline_buffer);
+		if (getline_buffer[0] == '\0' || getline_buffer[0] == ' ')
 		{
 			free(getline_buffer);
 			continue;
