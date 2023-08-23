@@ -20,7 +20,7 @@ void exec_func(char **token_array, char **environ)
 	{
 		path_copy = path_directories(environ);
 		find_in_path((ret = _strcheck(token_array[0])), path_copy,
-				token_array, environ);
+					token_array, environ);
 		free(path_copy);
 	}
 	if (a == 0)
