@@ -137,9 +137,7 @@ void find_in_path(char *args, char *str, char **av, char **environ)
 			exec_found = 1;
 			child_pid = fork();
 			if (child_pid == -1)
-			{
 				perror("fork function failed");
-			}
 			else if (child_pid == 0 && execve(full_path, av, environ) == -1)
 			{
 				perror("execve failed");
