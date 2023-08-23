@@ -69,3 +69,38 @@ int _strncmp(char *s1, char *s2, size_t n)
 	}
 	return (0);
 }
+
+/**
+ * free_tokens - Function frees tokenized strings
+ * @token_array: Array of tokens to be freed
+ *
+ * Return: Nothing
+ */
+
+void free_tokens(char **token_array)
+{
+	int i;
+
+	for (i = 0; token_array[i] != NULL; i++)
+		free(token_array[i]);
+	free(token_array);
+}
+
+/**
+ * exit_status - Returns an exit status
+ * @token_array: Tokenized strings
+ *
+ * Return: The status, 0 if token_array is NULL
+ */
+
+int exit_status(char **token_array)
+{
+	int status;
+
+	if (token_array[1] == NULL)
+		return (0);
+	status = atoi(token_array[1]);
+	if (status < 0)
+		status = 2;
+	return (status);
+}
