@@ -25,7 +25,6 @@ int main(int ac, char **token_array, char **environ)
 		getline_buffer = read_line();
 		if (getline_buffer == NULL)
 		{
-			write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
 		if (getline_buffer[0] == '\n')
