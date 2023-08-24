@@ -1,9 +1,12 @@
 #include "shell.h"
+
 /**
  * change_directory - function that change directory
  * @dir: token_array
+ * @environ: The environment variable
  * Return: void(nothing)
  */
+
 void change_directory(char *dir, char **environ)
 {
 	char cwd[MAX_PATH_LENGTH];
