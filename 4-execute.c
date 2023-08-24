@@ -19,7 +19,11 @@ void exec_func(char **token_array, char **environ)
 	{
 		print_environment(environ);
 	}
-	if (scs == 2 || scs == 3)
+	if (scs == 2)
+	{
+		change_directory(token_array[1], environ);
+	}
+	if (scs == 3 || scs == 4)
 	{
 		a = access(token_array[0], F_OK);
 		if (a == -1)
