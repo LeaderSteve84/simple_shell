@@ -29,27 +29,30 @@ int compare_first_five(char *str1, char *str2)
  * * Return: A string pointer
  */
 
-char *_strcheck(char *args)
+int _strcheck(char *args)
 {
 	char *prefix;
 
 	prefix = "/bin/";
 
-	if (_strcmp("exit", args) == 0)
+	if (_strcmp("env", args) == 0)
 	{
-		write(STDOUT_FILENO, "", 0);
-		exit(errno);
+		return (1);
 	}
 	if (compare_first_five(args, prefix))
 	{
-		return (args);
+		return (2);
 	}
-	return (args);
+	else if (_strcmp("exit", args) != 0 && _strcmp("env", args) != 0)
+	{
+		return (3);
+	}
+	return (4);
 }
 
 /**
  * _getenv - function that retrieve an environment variable values.
- * @name: name of the env. variable
+ * @name: name of the env. vairiable
  * @environ: user environment
  * Return: a pointer to a string.
  */
