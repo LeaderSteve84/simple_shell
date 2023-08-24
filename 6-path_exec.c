@@ -39,15 +39,19 @@ int _strcheck(char *args)
 	{
 		return (1);
 	}
-	if (compare_first_five(args, prefix))
+	if (_strcmp("cd", args) == 0)
 	{
 		return (2);
 	}
-	else if (_strcmp("exit", args) != 0 && _strcmp("env", args) != 0)
+	if (compare_first_five(args, prefix))
 	{
 		return (3);
 	}
-	return (4);
+	else if (_strcmp("exit", args) != 0 && _strcmp("env", args) != 0)
+	{
+		return (4);
+	}
+	return (5);
 }
 
 /**
