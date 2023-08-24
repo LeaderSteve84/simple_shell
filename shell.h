@@ -23,7 +23,7 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, size_t n);
 int _strlen(char *str);
 char *_strstr(char *haystack, char *needle);
-char *_strcheck(char *args);
+int _strcheck(char *args);
 char *_strcat(char *dest, char *src);
 char *_strncpy(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
@@ -34,6 +34,8 @@ void find_in_path(char *args, char *str, char **av, char **environ);
 void free_tokens(char **token_array);
 int exit_status(char **token_array);
 void remove_newline_character(char *getline_buffer);
+void print_environment(char **environ);
+void execute_absolute_path(char *args, char **token_array, char **environ);
 
 
 #endif /* #ifndef SHELL_H */
