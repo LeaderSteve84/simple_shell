@@ -99,6 +99,12 @@ int exit_status(char **token_array)
 
 	if (token_array[1] == NULL)
 		return (0);
+	if (_strcmp(token_array[1], "HBTN") == 0)
+	{
+		write(1, "./hsh: 1: exit: Illegal ", 24);
+		write(1, "number: HBTN\n", 13);
+		return (2);
+	}
 	status = atoi(token_array[1]);
 	if (status < 0)
 		status = 2;
