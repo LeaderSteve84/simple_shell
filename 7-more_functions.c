@@ -71,8 +71,10 @@ int _strncmp(char *s1, char *s2, size_t n)
 }
 
 /**
- * free_tokens - Function frees tokenized strings
+ * _free - Function frees tokenized strings
  * @token_array: Array of tokens to be freed
+ * @buf: The getline_buffer
+ * @s: The buffer string
  *
  * Return: Nothing
  */
