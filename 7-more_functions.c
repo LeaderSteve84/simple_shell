@@ -107,6 +107,12 @@ int exit_status(char **token_array)
 	}
 	status = atoi(token_array[1]);
 	if (status < 0)
+	{
+		write(1, "./hsh: 1: exit: Illegal ", 24);
+		write(1, "number: ", 8);
+		write(1, token_array[1], _strlen(token_array[1]));
+		write(1, "\n", 1);
 		status = 2;
+	}
 	return (status);
 }
