@@ -31,11 +31,14 @@ char *path_directories(char **environ);
 int compare_first_five(char *str1, char *str2);
 char *_getenv(char *name, char **environ);
 void find_in_path(char *args, char *str, char **av, char **environ);
-void free_tokens(char **token_array);
+void _free(char **token_array, char *buf, char *s);
 int exit_status(char **token_array);
 void remove_newline_character(char *getline_buffer);
 void print_environment(char **environ);
 void execute_absolute_path(char *args, char **token_array, char **environ);
 void change_directory(char *dir, char **environ);
+int _isdigit(int c);
+int _isalpha(int c);
+char *check_spaces(char *str);
 
 #endif /* #ifndef SHELL_H */

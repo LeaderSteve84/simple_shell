@@ -19,9 +19,7 @@ int main(int ac, char **token_array, char **environ)
 	while (1)
 	{
 		if (isatty_mode == 1)
-		{
 			write(STDOUT_FILENO, "$ ", 2);
-		}
 		getline_buffer = read_line();
 		if (getline_buffer == NULL)
 		{
@@ -32,23 +30,22 @@ int main(int ac, char **token_array, char **environ)
 		remove_newline_character(getline_buffer);
 		if (getline_buffer[0] == '\0' || getline_buffer[0] == ' ')
 		{
-			free(getline_buffer);
-			continue;
+			if (check_spaces(getline_buffer) == NULL)
+			{
+				free(getline_buffer);
+				continue;
+			}
 		}
 		buffer = duplicate(getline_buffer);
 		token_array = tokenize(getline_buffer, buffer, NULL);
 		if ((_strcmp(token_array[0], "exit") == 0))
 		{
 			status = exit_status(token_array);
-			free(buffer);
-			free(getline_buffer);
-			free_tokens(token_array);
+			_free(token_array, getline_buffer, buffer);
 			exit(status);
 		}
 		exec_func(token_array, environ);
-		free_tokens(token_array);
-		free(buffer);
-		free(getline_buffer);
+		_free(token_array, getline_buffer, buffer);
 	}
 	return (0);
 }

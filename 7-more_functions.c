@@ -77,13 +77,15 @@ int _strncmp(char *s1, char *s2, size_t n)
  * Return: Nothing
  */
 
-void free_tokens(char **token_array)
+void _free(char **token_array, char *buf, char *s)
 {
 	int i;
 
 	for (i = 0; token_array[i] != NULL; i++)
 		free(token_array[i]);
 	free(token_array);
+	free(buf);
+	free(s);
 }
 
 /**
