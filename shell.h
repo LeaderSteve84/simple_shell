@@ -37,7 +37,5 @@ void remove_newline_character(char *getline_buffer);
 void print_environment(char **environ);
 void execute_absolute_path(char *args, char **token_array, char **environ);
 void change_directory(char *dir, char **environ);
-char *_getenv(char *var_name, char **environ);
-
 
 #endif /* #ifndef SHELL_H */
