@@ -4,9 +4,11 @@
  * @args: token_array[0]
  * @token_array: users inputs
  * @environ: user environ
+ * @count: the count number of iteration of infinite loop
  * Return: void (nothing)
  */
-void execute_absolute_path(char *args, char **token_array, char **environ)
+void execute_absolute_path(char *args, char **token_array, char **environ,
+		int count)
 {
 	pid_t child_pid;
 	int status;
@@ -37,7 +39,7 @@ void execute_absolute_path(char *args, char **token_array, char **environ)
 	}
 	if (x == -1)
 	{
-		error_message(args, token_array);
+		error_message(args, count);
 		exit(errno);
 	}
 }

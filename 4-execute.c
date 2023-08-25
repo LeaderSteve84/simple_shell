@@ -4,11 +4,11 @@
  * exec_func - Executes commands
  * @token_array: Array of tokens
  * @environ: Global variable
- *
+ * @count: count number of the iteration in the infinite loop
  * Return: Nothing
  */
 
-void exec_func(char **token_array, char **environ)
+void exec_func(char **token_array, char **environ, int count)
 {
 	int scs;
 	ssize_t a;
@@ -29,12 +29,12 @@ void exec_func(char **token_array, char **environ)
 		if (a == -1)
 		{
 			path_copy = path_directories(environ);
-			find_in_path(token_array[0], path_copy, token_array, environ);
+			find_in_path(token_array[0], path_copy, token_array, environ, count);
 			free(path_copy);
 		}
 		if (a == 0)
 		{
-			execute_absolute_path(token_array[0], token_array, environ);
+			execute_absolute_path(token_array[0], token_array, environ, count);
 		}
 	}
 }

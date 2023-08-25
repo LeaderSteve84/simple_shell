@@ -3,24 +3,14 @@
  * error_message - function that print error message
  * to standard output
  * @args: first users input on standard input
- * @av: an array of user input on standard input
+ * @infi_loop_count: the count number of the infinite iteration.
  * Return: void(nothing)
  */
-void error_message(char *args, char **av)
+void error_message(char *args, int infi_loop_count)
 {
-	/*static variable to track command index*/
-	int count_input_strings = 0;
-	static int command_index;
-
-	command_index = 0;
-	while (av[count_input_strings] != NULL)
-	{
-		count_input_strings++;
-	}
-	command_index++;
 
 	write(STDOUT_FILENO, "hsh: ", 5);
-	_putchar(command_index + '0');/*convert integer to character*/
+	_putchar(infi_loop_count + '0');/*convert integer to character*/
 	write(STDOUT_FILENO, ": ", 2);
 	write(STDOUT_FILENO, args, _strlen(args));
 	write(STDOUT_FILENO, ": ", 2);

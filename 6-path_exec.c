@@ -117,10 +117,11 @@ char *path_directories(char **environ)
  * @args: the user input command
  * @av: the array of input tokens
  * @environ: user environ
- * Return:
+ * @count: the count number of the iteration of infinite loop
+ * Return: void(nothing)
  */
 
-void find_in_path(char *args, char *str, char **av, char **environ)
+void find_in_path(char *args, char *str, char **av, char **environ, int count)
 {
 	char *dir = NULL, *full_path = NULL;
 	pid_t child_pid;
@@ -161,5 +162,5 @@ void find_in_path(char *args, char *str, char **av, char **environ)
 		dir = strtok(NULL, ":");
 	}
 	if (!exec_found)
-		error_message(args, av);
+		error_message(args, count);
 }

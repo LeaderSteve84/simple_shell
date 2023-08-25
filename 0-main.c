@@ -11,13 +11,14 @@
 
 int main(int ac, char **token_array, char **environ)
 {
-	int isatty_mode = 0, status;
+	int isatty_mode = 0, status, count;
 	char *getline_buffer = NULL, *buffer = NULL;
 	(void)ac;
 
 	isatty_mode = isatty(STDIN_FILENO);
 	while (1)
 	{
+		count++;
 		if (isatty_mode == 1)
 			write(STDOUT_FILENO, "$ ", 2);
 		getline_buffer = read_line();
@@ -44,7 +45,7 @@ int main(int ac, char **token_array, char **environ)
 			_free(token_array, getline_buffer, buffer);
 			exit(status);
 		}
-		exec_func(token_array, environ);
+		exec_func(token_array, environ, count);
 		_free(token_array, getline_buffer, buffer);
 	}
 	return (0);

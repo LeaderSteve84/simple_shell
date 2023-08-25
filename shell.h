@@ -16,7 +16,7 @@
 char *read_line(void);
 char *duplicate(char *buff);
 char **tokenize(char *str, char *buff, char **token_array);
-void exec_func(char **token_array, char **environ);
+void exec_func(char **token_array, char **environ, int count);
 
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
@@ -30,17 +30,17 @@ char *_strchr(char *s, char c);
 char *path_directories(char **environ);
 int compare_first_five(char *str1, char *str2);
 char *_getenv(char *name, char **environ);
-void find_in_path(char *args, char *str, char **av, char **environ);
+void find_in_path(char *args, char *str, char **av, char **environ, int count);
 void _free(char **token_array, char *buf, char *s);
 int exit_status(char **token_array);
 void remove_newline_character(char *getline_buffer);
 void print_environment(char **environ);
-void execute_absolute_path(char *args, char **token_array, char **environ);
+void execute_absolute_path(char *args, char **token_array, char **environ, int count);
 void change_directory(char *dir, char **environ);
 int _isdigit(int c);
 int _isalpha(int c);
 char *check_spaces(char *str);
-void error_message(char *args, char **av);
+void error_message(char *args, int infi_loop_count);
 int _putchar(char count_num_strings);
 
 #endif /* #ifndef SHELL_H */
