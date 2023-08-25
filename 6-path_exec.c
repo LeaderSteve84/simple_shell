@@ -128,7 +128,7 @@ void find_in_path(char *args, char *str, char **av, char **environ, int count)
 	int status, exec_found = 0;
 
 	dir = strtok(str, ":");
-	while (dir != NULL)
+	while (dir != NULL && !compare_first_five(args, "/bin/"))
 	{
 		full_path = malloc(_strlen(dir) + _strlen(str) + 2);
 		if (full_path == NULL)
