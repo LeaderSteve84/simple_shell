@@ -40,5 +40,7 @@ void change_directory(char *dir, char **environ);
 int _isdigit(int c);
 int _isalpha(int c);
 char *check_spaces(char *str);
+void error_message(char *args, char **av);
+int _putchar(char count_num_strings);
 
 #endif /* #ifndef SHELL_H */
