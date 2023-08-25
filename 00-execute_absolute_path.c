@@ -23,7 +23,7 @@ void execute_absolute_path(char *args, char **token_array, char **environ)
 		a = execve(args, token_array, environ);
 		if (a == -1)
 		{
-			perror(token_array[0]);
+			error_message(args, token_array);
 			exit(errno);
 		}
 	}
