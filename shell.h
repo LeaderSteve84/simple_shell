@@ -13,7 +13,6 @@
 #include <sys/stat.h>
 #define MAX_PATH_LENGTH 1024
 
-char *read_line(void);
 char *duplicate(char *buff);
 char **tokenize(char *str, char *buff, char **token_array);
 void exec_func(char **token_array, char **environ, int count);
@@ -43,5 +42,7 @@ int _isalpha(int c);
 char *check_spaces(char *str);
 void error_message(char *args, int infi_loop_count);
 int _putchar(char count_num_strings);
+char *read_text(char **argv);
+char *read_line(int ac, char **argv);
 
 #endif /* #ifndef SHELL_H */
