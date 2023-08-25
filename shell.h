@@ -35,7 +35,8 @@ void _free(char **token_array, char *buf, char *s);
 int exit_status(char **token_array);
 void remove_newline_character(char *getline_buffer);
 void print_environment(char **environ);
-void execute_absolute_path(char *args, char **token_array, char **environ, int count);
+void execute_absolute_path(char *args, char **token_array,
+		char **environ, int count);
 void change_directory(char *dir, char **environ);
 int _isdigit(int c);
 int _isalpha(int c);
