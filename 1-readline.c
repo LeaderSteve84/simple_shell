@@ -47,24 +47,33 @@ char *read_line(int ac, char **argv)
 char *read_text(char **argv)
 {
 	FILE *stream;
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t nread;
+	char *line = NULL, *text = NULL;
+	size_t len = 0, fullsize = 0, length;
 
 	stream = fopen(argv[1], "r");
 	if (stream == NULL)
 	{
 		perror("can't open file");
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
-	nread = getline(&line, &len, stream);
-	if (nread == -1)
+	while (getline(&line, &len, stream) != -1)
 	{
-		perror("unable to read file\n");
-		fclose(stream);
-		free(line);
-		exit(EXIT_FAILURE);
+		length = len;
+		text = realloc(text, fullsize + length + 1);
+		if (text == NULL)
+		{
+			perror("memory allocation failure");
+			fclose(stream);
+			free(line);
+			exit(127);
+		}
+		_strcpy(text + fullsize, line);
+		fullsize += length;
 	}
+	free(line);
 	fclose(stream);
-	return (line);
+	if (fullsize == 0)
+		exit(127);
+	text[fullsize] = '\0';
+	return (text);
 }
