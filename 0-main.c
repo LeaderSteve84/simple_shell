@@ -46,8 +46,6 @@ int main(int ac, char **argv, char **environ)
 		}
 		exec_func(token_array, environ, count);
 		_free(token_array, getline_buffer, buffer);
-		if (ac == 2)
-			break;
 	}
 	return (0);
 }

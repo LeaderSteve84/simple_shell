@@ -13,15 +13,10 @@ char *read_line(int ac, char **argv)
 	char *getline_buffer = NULL;
 	size_t getline_buffer_size = 0;
 	ssize_t num_of_char_read;
+	(void)argv;
+	(void)ac;
 
-	if (ac == 2)
-	{
-		getline_buffer = read_text(argv);
-	}
-	else
-	{
-		num_of_char_read = getline(&getline_buffer, &getline_buffer_size, stdin);
-	}
+	num_of_char_read = getline(&getline_buffer, &getline_buffer_size, stdin);
 	/*handle ctrl+D*/
 	if (num_of_char_read == -1)
 	{
