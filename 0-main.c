@@ -3,25 +3,24 @@
 /**
  * main - Entry point
  * @ac: Argument count
- * @token_array: Array of tokens
+ * @argv: Argument vectors
  * @environ: The global variable
  *
  * Return: 0 (success)
  */
 
-int main(int ac, char **token_array, char **environ)
+int main(int ac, char **argv, char **environ)
 {
 	int isatty_mode = 0, status, count;
-	char *getline_buffer = NULL, *buffer = NULL;
-	(void)ac;
+	char *getline_buffer = NULL, *buffer = NULL, **token_array;
 
 	isatty_mode = isatty(STDIN_FILENO);
 	while (1)
 	{
 		count++;
-		if (isatty_mode == 1)
+		if (isatty_mode == 1 && ac != 2)
 			write(STDOUT_FILENO, "$ ", 2);
-		getline_buffer = read_line();
+		getline_buffer = read_line(ac, argv);
 		if (getline_buffer == NULL)
 		{
 			if (isatty_mode == 1)
@@ -47,6 +46,8 @@ int main(int ac, char **token_array, char **environ)
 		}
 		exec_func(token_array, environ, count);
 		_free(token_array, getline_buffer, buffer);
+		if (ac == 2)
+			break;
 	}
 	return (0);
 }
