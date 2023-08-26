@@ -28,7 +28,7 @@ void execute_absolute_path(char *args, char **token_array, char **environ,
 			a = execve(args, token_array, environ);
 			if (a == -1)
 			{
-				perror("execve failed at execute_absolute_path");
+				permission_denied(args, count);
 				exit(errno);
 			}
 		}

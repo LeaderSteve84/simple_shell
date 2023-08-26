@@ -11,7 +11,7 @@
 
 int main(int ac, char **argv, char **environ)
 {
-	int isatty_mode = 0, status, count;
+	int isatty_mode = 0, status, count = 0;
 	char *getline_buffer = NULL, *buffer = NULL, **token_array;
 
 	isatty_mode = isatty(STDIN_FILENO);
@@ -19,7 +19,9 @@ int main(int ac, char **argv, char **environ)
 	{
 		count++;
 		if (isatty_mode == 1 && ac != 2)
+		{
 			write(STDOUT_FILENO, "$ ", 2);
+		}
 		getline_buffer = read_line(ac, argv);
 		if (getline_buffer == NULL)
 		{

@@ -62,6 +62,8 @@ char *check_spaces(char *str);
 /*10-more_functions.c*/
 void error_message(char *args, int infi_loop_count);
 /*00-error_message.c*/
+void permission_denied(char *args, int infi_loop_count);
+/*00-error_message.c*/
 int _putchar(char count_num_strings);
 /*00-error_message.c*/
 char *read_text(char **argv);
