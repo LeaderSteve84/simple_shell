@@ -113,7 +113,7 @@ int exit_status(char **token_array)
 	{
 		write(2, "./hsh: 1: exit: Illegal number: ", 32);
 		write(2, token_array[1], _strlen(token_array[1]));
-		write(1, "\n", 1);
+		write(2, "\n", 1);
 		status = 2;
 	}
 	return (status);
