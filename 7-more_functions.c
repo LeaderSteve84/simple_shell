@@ -102,7 +102,13 @@ int exit_status(char **token_array)
 	int status;
 
 	if (token_array[1] == NULL)
+	{
+		if (errno != 0)
+		{
+			return(errno);
+		}
 		return (0);
+	}
 	if (_strcmp(token_array[1], "HBTN") == 0)
 	{
 		write(2, "./hsh: 1: exit: Illegal number: HBTN\n", 37);
