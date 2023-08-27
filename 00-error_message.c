@@ -10,13 +10,13 @@
 void error_message(char *args, int infi_loop_count)
 {
 
-	write(STDOUT_FILENO, "hsh: ", 5);
+	write(2, "hsh: ", 5);
 	_putchar(infi_loop_count + '0');/*convert integer to character*/
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, args, _strlen(args));
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, "not found", 9);
-	write(STDOUT_FILENO, "\n", 1);
+	write(2, ": ", 2);
+	write(2, args, _strlen(args));
+	write(2, ": ", 2);
+	write(2, "not found", 9);
+	write(2, "\n", 1);
 }
 
 
@@ -29,13 +29,13 @@ void error_message(char *args, int infi_loop_count)
 void permission_denied(char *args, int infi_loop_count)
 {
 
-	write(STDOUT_FILENO, "hsh: ", 5);
+	write(2, "hsh: ", 5);
 	_putchar(infi_loop_count + '0');/*convert integer to character*/
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, args, _strlen(args));
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, "permission denied", 17);
-	write(STDOUT_FILENO, "\n", 1);
+	write(2, ": ", 2);
+	write(2, args, _strlen(args));
+	write(2, ": ", 2);
+	write(2, "permission denied", 17);
+	write(2, "\n", 1);
 }
 
 
@@ -47,6 +47,6 @@ void permission_denied(char *args, int infi_loop_count)
  */
 int _putchar(char count_input_strings)
 {
-	return (write(1, &count_input_strings, 1));
+	return (write(2, &count_input_strings, 1));
 }
 
