@@ -108,7 +108,7 @@ int exit_status(char **token_array)
 		write(2, "./hsh: 1: exit: Illegal number: HBTN\n", 37);
 		return (2);
 	}
-	if ((access(token_array[1], F_OK) == -1) &&
+	if ((access(token_array[1], R_OK) == -1) &&
 			access(token_array[0], F_OK) == 0)
 	{
 		return (2);
