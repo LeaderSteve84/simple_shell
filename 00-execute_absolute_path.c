@@ -30,7 +30,7 @@ void execute_absolute_path(char *args, char **token_array, char **environ,
 			if (a == -1)
 			{
 				permission_denied(args, count);
-				exit(errno);
+				exit(2);
 			}
 		}
 		else
