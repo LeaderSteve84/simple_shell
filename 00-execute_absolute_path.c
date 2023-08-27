@@ -41,6 +41,6 @@ void execute_absolute_path(char *args, char **token_array, char **environ,
 	if (x == -1)
 	{
 		error_message(args, count);
-		exit(2);
+		exit(errno);
 	}
 }
