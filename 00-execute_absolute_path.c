@@ -27,6 +27,8 @@ void execute_absolute_path(char *args, char **token_array, char **environ,
 		else if (child_pid == 0)
 		{
 			a = execve(args, token_array, environ);
+			if (access(token_array[1], R_OK) == -1)
+				exit(2);
 			if (a == -1)
 			{
 				permission_denied(args, count);
