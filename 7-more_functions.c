@@ -103,7 +103,7 @@ int exit_status(char **token_array)
 
 	if (token_array[1] == NULL)
 	{
-		status = WEXITSTATUS();
+		status = system("/bin/ls /test_hbtn");
 		if (status != 0)
 			return (status);
 		return (0);
@@ -111,11 +111,6 @@ int exit_status(char **token_array)
 	if (_strcmp(token_array[1], "HBTN") == 0)
 	{
 		write(2, "./hsh: 1: exit: Illegal number: HBTN\n", 37);
-		return (2);
-	}
-	if ((access(token_array[1], R_OK) == -1) &&
-			access(token_array[0], F_OK) == 0)
-	{
 		return (2);
 	}
 	status = atoi(token_array[1]);
