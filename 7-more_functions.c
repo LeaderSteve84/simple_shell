@@ -103,6 +103,9 @@ int exit_status(char **token_array)
 
 	if (token_array[1] == NULL)
 	{
+		status = WEXITSTATUS();
+		if (status != 0)
+			return (status);
 		return (0);
 	}
 	if (_strcmp(token_array[1], "HBTN") == 0)
